@@ -1,0 +1,45 @@
+import { Route, Routes } from "react-router";
+import { Home } from "./components/Home";
+import { Login } from "./components/Login";
+import { Logout } from "./components/Logout";
+import { NewOrder } from "./components/NewOrder";
+import { Orders } from "./components/Orders";
+import { ProtectedRoute } from "./components/ProtextedRoute";
+import {Link} from "react-router-dom"
+
+function App() {
+  return (
+    <div className="App">
+      <div>
+        <Link className="nav-home" to="/">
+          Home
+        </Link>
+        {/* Show either login or logout below */}
+        <Link className="nav-logout" to="/logout">
+          Logout
+        </Link>
+        <Link className="nav-login" to="/login">
+          Login
+        </Link>
+      </div>
+
+      <Routes>
+        {/* Routes are as follows:
+        Route      Component
+        /           Home
+        /login      Login
+        /logout     Logout
+        /orders     Orders    Protected
+        /neworder   NewOrder  Protected
+        */}
+         <Route exact path="/" element={<Home/>}/>
+      <Route exact path="/login" element={<Login/>}/>
+      <Route exact path="/logout" element={<Logout/>}/>
+      <Route  exact path="/orders" element={<Orders/>}/>
+      <Route exact path="/neworder" element={<NewOrder/>}/>
+      </Routes>
+    </div>
+  );
+}
+
+export default App;
